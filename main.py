@@ -67,7 +67,7 @@ for line in lines:
         headers = re.findall(r'Заболели|Умерли|Вылечились|Активные случаи', headers)
         print(headers)
     else:
-
+#удаление тегов т символов лишних
         temp = re.sub('<.*?>', ';', line)
         temp = re.sub("\(.*?\)", '', temp)
         temp = re.sub(';+', ';', temp)
@@ -81,10 +81,10 @@ for line in lines:
         tmp_split = temp.split(';')
         if len(tmp_split) == 6:
             tmp_split.pop(0)
-
+#извлечение и удаление лишних символов из первого столбца
         country_name = tmp_split[0]
         country_name = re.sub('.*\s\s', '', country_name)
-
+#извлечение данных из остальных столбцов
         col1_val = tmp_split[1]
         col2_val = tmp_split[2]
         col3_val = tmp_split[3]
@@ -108,5 +108,17 @@ for key in result_dct.keys():
 output.close()
 
 # Задание №6
-target_country = input("Введите название страны: ")
-print(result_dct[target_country])
+f_bool = True
+
+
+try:
+    target_country = input("Введите название страны: ")
+    print(result_dct[target_country])
+except Exception: print("Не верно введено название страны")
+
+
+
+
+
+
+
