@@ -99,6 +99,25 @@ for line in lines:
 
     counter += 1
 
+    """
+    temp = re.sub('<.*?>', ';', line)
+    resultArr = list(filter(None, temp.split(';')))
+    for i in range(len(resultArr)):
+        if '(+' in resultArr[i]:
+            resultArr[i - 1] += resultArr[i]
+            resultArr[i] = ''
+    resultArr = list(filter(None, resultArr))
+
+    if resultArr[0] == 'Заболели' or resultArr[0] == '📝  ':
+        continue
+
+    resultArr[0] = resultArr[0][4::]
+
+
+    result_dct[resultArr[0]] = 'Заболели: ' + resultArr[1] + '\nУмерли: ' + resultArr[2] + '\nВылечились: ' + resultArr[
+        3] + '\nАктивные случаи: ' + resultArr[4] + ';\n'
+    """
+
 # Задание №5
 output = open('data.csv', 'w')
 w = csv.writer(output, delimiter=";")
